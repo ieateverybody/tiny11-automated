@@ -354,7 +354,6 @@ function Remove-BloatwareApps {
         'Microsoft.BingWeather',
         'Microsoft.Copilot',
         'Microsoft.Windows.CrossDevice',
-        'Microsoft.GamingApp',
         'Microsoft.GetHelp',
         'Microsoft.Getstarted',
         'Microsoft.Microsoft3DViewer',
@@ -376,25 +375,16 @@ function Remove-BloatwareApps {
         'Microsoft.Windows.DevHome',
         'Microsoft.Windows.Copilot',
         'Microsoft.Windows.Teams',
-        'Microsoft.Windows.Photos',
         'Microsoft.ScreenSketch',
-        'Microsoft.StorePurchaseApp',
         'Microsoft.MPEG2VideoExtension',
         'Microsoft.WebMediaExtensions',
         'MicrosoftWindows.Client.WebExperience',
         'Microsoft.WindowsAlarms',
-        'Microsoft.WindowsCamera',
         'microsoft.windowscommunicationsapps',
         'Microsoft.WindowsFeedbackHub',
         'Microsoft.WindowsMaps',
         'Microsoft.WindowsSoundRecorder',
         'Microsoft.WindowsTerminal',
-        'Microsoft.Xbox.TCUI',
-        'Microsoft.XboxApp',
-        'Microsoft.XboxGameOverlay',
-        'Microsoft.XboxGamingOverlay',
-        'Microsoft.XboxIdentityProvider',
-        'Microsoft.XboxSpeechToTextOverlay',
         'Microsoft.YourPhone',
         'Microsoft.ZuneMusic',
         'Microsoft.ZuneVideo',
@@ -479,7 +469,6 @@ function Remove-EdgeAndOneDrive {
     # Clean up other remnants
     Write-Log "Cleaning up other remnants (GameBar, Copilot)..."
     $otherRemnants = @(
-        "$scratchDir\Windows\GameBarPresenceWriter",
         "$scratchDir\Windows\System32\SettingsHandlers_Copilot.dll"
     )
     foreach ($path in $otherRemnants) {
@@ -743,7 +732,7 @@ function Apply-PerformanceTweaks {
     Set-RegistryValue 'HKLM\zSYSTEM\ControlSet001\Control\GraphicsDrivers' 'TdrDelay'    'REG_DWORD' '10'
     Set-RegistryValue 'HKLM\zSYSTEM\ControlSet001\Control\GraphicsDrivers' 'TdrDdiDelay' 'REG_DWORD' '10'
     # Disable Xbox Game DVR / Game Bar capture overlay
-    Set-RegistryValue 'HKLM\zNTUSER\SYSTEM\GameConfigStore' 'GameDVR_Enabled'                        'REG_DWORD' '0'
+    Set-RegistryValue 'HKLM\zNTUSER\SYSTEM\GameConfigStore' 'GameDVR_Enabled'                        'REG_DWORD' '1'
     Set-RegistryValue 'HKLM\zNTUSER\SYSTEM\GameConfigStore' 'GameDVR_FSEBehaviorMode'                'REG_DWORD' '2'
     Set-RegistryValue 'HKLM\zNTUSER\SYSTEM\GameConfigStore' 'GameDVR_HonorUserFSEBehaviorMode'       'REG_DWORD' '1'
     Set-RegistryValue 'HKLM\zNTUSER\SYSTEM\GameConfigStore' 'GameDVR_DXGIHonorFSEWindowsCompatible'  'REG_DWORD' '1'
